@@ -1,42 +1,4 @@
-# Marp Slides Template
-
-[Use this template!](https://github.com/codebytes/marp-slides-template/generate)
-
-Create a Marp presentation site that can be built and published on [GitHub Pages] using this minimal template. The site features:
-
-- Marp integration
-- A GitHub Pages / Actions workflow for build and publish ([See a preview](http://chris-ayers.com/marp-slides-template/))
-- A DevContainer/CodeSpace configuration with Marp and Markdown preview extensions
-- Chrome installation for PDF and PowerPoint slide creation on Linux
-
-## Customization
-
-Feel free to customize the sites created with this template as you like!
-
-## Getting Started
-
-1. Click "[use this template]" to create a new site.
-2. Update the content of `slides/Slides.md` with your own presentation.
-
-## Custom Themes
-
-This template includes four custom themes in the `slides/themes` folder:
-
-- custom
-- custom-default (based on the built-in default theme)
-- custom-gaia (based on the built-in gaia theme)
-- custom-uncover (based on the built-in uncover theme)
-
-To use a custom theme, edit the relevant css file and add its reference in the front matter of `Slides.md`. For example, to use `custom-default` add the following to the `Slides.md` front matter:
-
-```markdown
----
-marp: true
-theme: custom-default
----
-```
-
-For additional themes, add them to the devcontainer and follow the [Marp custom theme documentation](https://marpit.marp.app/theme-css).
+# Presentation about unit testing in python
 
 ## Publishing on GitHub Pages
 
@@ -55,8 +17,6 @@ For additional themes, add them to the devcontainer and follow the [Marp custom 
 This repository is licensed under the [MIT License]. Reuse or extend the code as you wish, but include the original license. The deployment GitHub Actions workflow is based on GitHub's starter workflows.
 
 ## Resources
-
-- [Use this template](https://github.com/codebytes/marp-slides-template/generate)
 
 - GitHub Pages: [https://docs.github.com/en/pages](https://docs.github.com/en/pages)
 

@@ -1,97 +1,79 @@
 ---
 marp: true
 theme: custom-default
-footer: 'https://example.com'
+footer: 'https://github.com/koen-ongena-imec/unit-testing-python'
 ---
 
-# My Presentation
-![bg right](https://picsum.photos/800/600)
+# Unit testing in Python
+## A beginners guide
 
----
-
-<!-- Speaker Notes -->
-## Slide 1
-
-- Item 1
-- Item 2
-- Item 3
-<!-- Can have multiple on a slide -->
+![bg right](https://images.unsplash.com/photo-1426927308491-6380b6a9936f?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 ---
 
-## Slide 2
-<!-- Can also do a multiline
-comment that will show in notes -->
+## Agenda
 
-![Image](https://picsum.photos/800/600)
-
----
-
-## Slide 3
-
-> This is a quote.
+1. What is Unit Testing?
+2. Benefits of Unit Testing
+3. When to Apply Unit Testing
+4. Getting Started with Unit Testing in Python
 
 ---
 
-## Slide 4
+## What is Unit Testing?
 
-| Column 1 | Column 2 |
-| -------- | -------- |
-| Item 1   | Item 2   |
-| Item 3   | Item 4   |
+- **Definition:** The process of testing individual units or components of a software application.
+- **Unit:** The smallest testable part of an application, typically a function or method.
 
 ---
 
-![bg opacity](https://picsum.photos/800/600?image=53)
-## Slide 5
+## Benefits of Unit Testing
 
-<div class="columns">
-<div>
-
-## Left
-
-- 1
-- 2
-
-</div>
-<div>
-
-## Right
-
-- 3
-- 4
-
-</div>
-</div>
+1. **Early Detection of Bugs:**
+   - Identifying issues at the development stage.
+2. **Code Quality Assurance:**
+   - Ensuring code is modular and maintainable.
+3. **Facilitates Refactoring:**
+   - Confidence to make changes without fear of breaking existing functionality.
+4. **Documentation:**
+   - Acts as executable documentation for your code.
 
 ---
 
-## Slide 6
+## When to Apply Unit Testing
 
-<i class="fa-brands fa-twitter"></i> Twitter: 
-<i class="fa-brands fa-mastodon"></i> Mastodon: 
-<i class="fa-brands fa-linkedin"></i> LinkedIn: 
-<i class="fa fa-window-maximize"></i> Blog: 
-<i class="fa-brands fa-github"></i> GitHub: 
-
----
-
-# <!--fit--> Large Text
+- **Before Integration Testing:**
+  - Test individual components in isolation.
+- **After Code Changes:**
+  - Confirm existing functionality is unaffected.
+- **Throughout Development:**
+  - Continuous testing ensures ongoing code quality.
 
 ---
 
-<!-- Needed for mermaid, can be anywhere in file except frontmatter -->
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
+# Getting Started with Unit Testing in Python
 
-# Mermaid
+## Step 1: Choose a Testing Framework
 
-<div class="mermaid">
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-</div>
+- **Popular Frameworks:**
+  - `unittest` (built-in), `pytest`, `nose2`, etc.
+
+---
+# Getting Started with Unit Testing in Python
+
+## Step 2: Write Test Cases
+
+- **Anatomy of a Test Case:**
+  - Define a test class.
+  - Write test methods with assertions.
+
+```python
+import unittest
+
+class MyTestCase(unittest.TestCase):
+    def test_example(self):
+        self.assertEqual(1 + 1, 2)
+```
+
+---
+<i class="fa-brands fa-github"></i> GitHub: https://github.com/koen-ongena-imec/
