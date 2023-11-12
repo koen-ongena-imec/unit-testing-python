@@ -1,5 +1,7 @@
 # Presentation about unit testing in python
 
+Slides: [click here](https://koen-ongena-imec.github.io/unit-testing-python/)
+
 ## Publishing on GitHub Pages
 
 1. In your GitHub repo, navigate to `Settings` > `Pages` > `Build and deployment`.
