@@ -148,6 +148,30 @@ class MyTestCase(unittest.TestCase):
 If the “arrange” part of your unit test becomes cumbersome,reconsider the design or the "unit" you are testing.
 
 ---
+
+## Keep the Arrange part lean and mean
+
+Use fixtures
+
+```
+@classmethod
+def setUpClass(cls):
+    print("setupClass invoked")
+
+def setUp(self):
+    print("Setup invoked")
+
+def tearDown(self) -> None:
+    print("tearDown invoked")
+    super().tearDown()
+
+@classmethod
+def tearDownClass(cls) -> None:
+    print("tearDownClass ivoked")
+    super().tearDownClass()
+```
+
+---
 ## One Assert Per Test Method
 
 ---
@@ -157,4 +181,136 @@ If the “arrange” part of your unit test becomes cumbersome,reconsider the de
 ## Test Positive and Negative Scenarios
 
 ---
+## Mocking
+
+Mocking is a technique used in unit testing to replace __parts of the software with simulated or controlled components__, allowing you to isolate the code you're testing from the external dependencies. The primary goal of mocking is to ensure that the unit being tested is truly isolated and only the functionality of that unit is being tested, not the behavior of its dependencies.
+
+mocking in unittest:
+
+https://docs.python.org/dev/library/unittest.mock.html
+
+---
+
+## Mocking
+
+```
+from unittest.mock import MagicMock
+
+# Creating a mock object
+my_mock = MagicMock()
+
+# Using the mock in a test
+my_mock.some_method.return_value = 42
+result = my_mock.some_method()
+
+# Asserting the mock was called
+my_mock.some_method.assert_called_once_with()
+```
+
+---
+
+## Mocking random generators
+
+```
+@patch('random.randint', mock.MagicMock(return_value=6))
+def test_roll_dice_win(self):
+    # act
+    result = roll_dice()
+
+    # assert
+    self.assertEqual(result, "Win")
+```
+
+---
+
+## Mocking dates
+
+https://github.com/spulec/freezegun/
+or
+https://docs.python.org/3/library/unittest.mock-examples.html#partial-mocking
+
+---
+## Testing images and plots
+
+* matplotlib:
+  * https://matplotlib.org/stable/api/testing_api.html 
+  * https://matplotlib.org/stable/devel/testing.html
+
+--- 
+## Hamcrest
+
+https://github.com/hamcrest/PyHamcrest 
+ 
+ ```python
+from hamcrest import assert_that, equal_to
+import unittest
+
+
+class BiscuitTest(unittest.TestCase):
+    def testEquals(self):
+        theBiscuit = Biscuit("Ginger")
+        myBiscuit = Biscuit("Ginger")
+        assert_that(theBiscuit, equal_to(myBiscuit))
+ ```
+
+---
+## Hamcrest custom matchers
+
+```python
+def testDateIsOnASaturday(self):
+    d = datetime.date(2008, 4, 26)
+    assert_that(d, is_(on_a_saturday()))
+```
+
+---
+
+```python
+from hamcrest.core.base_matcher import BaseMatcher
+from hamcrest.core.helpers.hasmethod import hasmethod
+
+
+class IsGivenDayOfWeek(BaseMatcher):
+    def __init__(self, day):
+        self.day = day  # Monday is 0, Sunday is 6
+
+    def _matches(self, item):
+        if not hasmethod(item, "weekday"):
+            return False
+        return item.weekday() == self.day
+
+    def describe_to(self, description):
+        day_as_string = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+        ]
+        description.append_text("calendar date falling on ").append_text(
+            day_as_string[self.day]
+        )
+
+
+def on_a_saturday():
+    return IsGivenDayOfWeek(5)
+```
+
+---
+## Conclusion
+
+__Unit Testing is advised__
+&nbsp;For robust, maintainable, and bug-free code.
+__Start Small, Expand Gradually__
+&nbsp;Begin with critical components and expand over time.
+__Continuous Integration__
+&nbsp;Automate tests as part of your development process.
+__Follow Best Practices__
+&nbsp;AAA pattern, clear test names, isolated tests, and good coverage.
+
+---
+
 <i class="fa-brands fa-github"></i> GitHub: https://github.com/koen-ongena-imec/unit-testing-python
+
+<i class="fa-brands fa-python"></i> Python unittest: https://docs.python.org/3/library/unittest.html#
